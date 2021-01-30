@@ -4,6 +4,8 @@
 
 ## Project Description: Search for your favorite recipes and save them to your calender.
 
+![Wireframe](/assets/wireframe.jpg)
+
 *Bonus: Add allergies, health restrictions, shopping list, estimate price, etc.*
 
 ## User Story: AS A (hungry person) I WANT an application to help(find recipes), SO THAT I can readily (schedule meals).
