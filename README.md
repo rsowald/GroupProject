@@ -14,8 +14,8 @@ GIVEN a dashboard bar with food inputs.
 WHEN I search for a recipe with set criteria.
 THEN I am presented with a list of different recipes that meet my request.
 WHEN I have a list of recipes.
-THEN I can add these recipes to the calander below. 
-WHEN I have recipes mapped onto my schedule I an better plan my meals. 
+THEN I can add these recipes to the calender below. 
+WHEN I have recipes mapped onto my schedule I can better plan my meals. 
 
 ## Conclusion
 
