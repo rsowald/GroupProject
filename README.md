@@ -5,6 +5,10 @@
 ## Project Description: 
 Search for your recipes by ingredient and save links to a built-in weekly calender. If you don't have any special ingredients you want to use, you can push the random recipe button for a list of 10 random recipes to choose from.
 
+## APIs Used:
+- TheMealDB to pull a random selection of recipes
+- RecipePuppy to search recipes by ingredient
+
 ![Wireframe](/assets/wireframe.jpg)
 ## User Story: 
 AS A hungry person
