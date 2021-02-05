@@ -20,7 +20,7 @@
   <div class="container">
     <div class="row">
 
-      <aside class="col s4">
+      <aside class="col s3">
         <div class="card-panel orange lighten-2">
           <h3>Saved Recipe Links</h3>
           <!-- savedLinks -->
@@ -43,9 +43,21 @@
         <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
       </aside>
 
-      <div class="col s8 center-align" id="recipesResults">
-        <h3>Recipes Placeholder</h3>
+      <div class="col s9" id="recipesResults">
 
+        <ul class="col s4">
+          <h5>Find New Recipes</h5>
+          <div class="input-field">
+            <input id="user-search" type="text" class="validate">
+            <label class="active" for="user-search">Ingredient or Keyword</label>
+          </div>
+          <button class="waves-effect waves-light btn-small" id="search-btn">Search</button>
+          <h5>No start ideas?</h5>
+          <button class="waves-effect waves-light btn-small" id="random-btn">Random</button>
+          <br>
+          <button class="waves-effect waves-light btn-small" id="calendar-btn">Add to Calendar</button>
+        </ul>
+        
       </div>
 
     </div>
