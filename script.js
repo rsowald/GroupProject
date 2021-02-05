@@ -15,13 +15,15 @@ function getRecipePuppy() {
         for (var i = 0; i < data.length; i++) {
             var title = document.createElement('h1')
             var link = document.createElement('p')
-            // forEach/forloop
-            var ingredients = document.createElement('ul')
+            // for loop or forEach
+            var ingredientList = document.createElement('ul')
             var ingredient = document.createElement('li')
 
             title.textContent = data.results[i].title;
             link.textContent = data.results[i].href;
             ingredient.textContent = data.results[i].ingredients
+
+
 
      
      
