@@ -19,14 +19,14 @@
 </head>
 
 <body>
-  <header class="center-align orange lighten-2">
+  <header class="center-align amber">
     <h1>What Am I Eating Today?</h1>
   </header>
   <div class="container">
     <div class="row">
 
       <aside class="col s3">
-        <div class="card-panel orange lighten-2">
+        <div class="card-panel amber">
           <h3>Saved Recipe Links</h3>
           <!-- savedLinks -->
           <div></div>
@@ -34,17 +34,12 @@
         </div>
         <div class="card">
           <div class="card-image">
-            <img src="https://via.placeholder.com/300">
+            <img src="assets/eric-rothermel-FoKO4DpXamQ-unsplash.jpg">
             <span class="card-title">Calendar</span>
           </div>
-          <div class="card-content">
-            <p>I am a very simple card. I could have a picture of our calendar modal or I could be a card without an
-              image?</p>
-          </div>
           <div class="card-action">
-            <button data-target="modal1" class="btn modal-trigger">Modal</button>
+            <button class="waves-effect waves-light btn modal-trigger" href="#modal1">Open</button>
           </div>
-        </div>
       </aside>
 
       <div class="col s9" id="recipesResults">
@@ -56,7 +51,7 @@
             <label class="active" for="user-search">Ingredient or Keyword</label>
           </div>
           <button class="waves-effect waves-light btn-small" id="search-btn">Search</button>
-          <h5>No start ideas?</h5>
+          <h5>No ideas?</h5>
           <button class="waves-effect waves-light btn-small" id="random-btn">Random</button>
           <br>
           <button class="waves-effect waves-light btn-small" id="calendar-btn">Add to Calendar</button>
@@ -68,37 +63,37 @@
 
   </div>
 
-  <div id="modal1" class="modal">
+  <div id="modal1" class="modal grey">
     <div class="modal-content">
       <div class="row center-align">
         <h4>Meal Schedule</h4>
       </div>
       <div class="row center-align">
-        <h5 class="z-depth-4 amber darken-1">Monday</h5>
+        <h6><span class="z-depth-4 amber darken-1">Monday</span></h6>
       </div>
       <div class="row center-align">
-        <h5 class="z-depth-4 amber darken-1">Tuesday</h5>
+        <h6><span class="z-depth-4 amber darken-1">Tuesday</span></h6>
       </div>
       <div class="row center-align">
-        <h5 class="z-depth-4 amber darken-1">Wednesday</h5>
+        <h6><span class="z-depth-4 amber darken-1">Wednesday</span></h6>
       </div>
       <div class="row center-align">
-        <h5 class="z-depth-4 amber darken-1">Thursday</h5>
+        <h6><span class="z-depth-4 amber darken-1">Thursday</span></h6>
       </div>
       <div class="row center-align">
-        <h5 class="z-depth-4 amber darken-1">Friday</h5>
+        <h6><span class="z-depth-4 amber darken-1">Friday</span></h6>
       </div>
       <div class="row center-align">
-        <h5 class="z-depth-4 amber darken-1">Saturday</h5>
+        <h6><span class="z-depth-4 amber darken-1">Saturday</span></h6>
       </div>
       <div class="row center-align">
-        <h5 class="z-depth-4 amber darken-1">Sunday</h5>
+        <h6><span class="z-depth-4 amber darken-1">Sunday</span></h6>
       </div>
 
 
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+      <button href="#!" class="modal-close waves-effect waves-green btn-flat">Close</button>
     </div>
   </div>
 
@@ -108,7 +103,7 @@
     }
     ) </script>
 
-  <!-- <script src="script.js"></script> -->
+  <script src="script.js"></script>
 </body>
 
 </html>
