@@ -1,5 +1,7 @@
 body {
-    background-color: bisque;
+    background-image: url("lukas-blazek-f-TWhXOrLiU-unsplash.jpg");
+    background-size: cover;
+    background-color: black;
     color: rgb(29, 28, 28);
 }
 
@@ -12,9 +14,10 @@ h1 {
 }
 
 .container {
-    border: #ffb74d dotted 2px;
+    background-color: rgb(255, 224, 130, .5);
     margin-top: 50px;
     margin-bottom: 50px;
+    padding: 15px;
 }
 
 .btn-small {
@@ -23,4 +26,16 @@ h1 {
     margin: 15px;
     background-color: #039be5;
     font-weight: bolder;
+}
+
+.card-action button {
+    border-radius: 5px;
+    background-color: #039be5;
+    color: black;
+    font-weight: bolder;
+}
+
+.modal span {
+    border-radius: 5px;
+    padding: 2px;
 }

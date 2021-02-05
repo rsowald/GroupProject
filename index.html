@@ -7,21 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>What Am I Eating Today?</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js">
+  </script>
   <link rel="stylesheet" href="assets/style.css">
 
 </head>
 
 <body>
-  <header class="center-align orange lighten-2">
+  <header class="center-align amber">
     <h1>What Am I Eating Today?</h1>
   </header>
   <div class="container">
     <div class="row">
 
       <aside class="col s3">
-        <div class="card-panel orange lighten-2">
+        <div class="card-panel amber">
           <h3>Saved Recipe Links</h3>
           <!-- savedLinks -->
           <div></div>
@@ -29,18 +34,12 @@
         </div>
         <div class="card">
           <div class="card-image">
-            <img src="https://via.placeholder.com/300">
+            <img src="assets/eric-rothermel-FoKO4DpXamQ-unsplash.jpg">
             <span class="card-title">Calendar</span>
           </div>
-          <div class="card-content">
-            <p>I am a very simple card. I could have a picture of our calendar modal or I could be a card without an
-              image?</p>
-          </div>
           <div class="card-action">
-            <a href="#">This is a link to the Calendar</a>
+            <button class="waves-effect waves-light btn modal-trigger" href="#modal1">Open</button>
           </div>
-        </div>
-
       </aside>
 
       <div class="col s9" id="recipesResults">
@@ -52,21 +51,58 @@
             <label class="active" for="user-search">Ingredient or Keyword</label>
           </div>
           <button class="waves-effect waves-light btn-small" id="search-btn">Search</button>
-          <h5>No start ideas?</h5>
+          <h5>No ideas?</h5>
           <button class="waves-effect waves-light btn-small" id="random-btn">Random</button>
           <br>
           <button class="waves-effect waves-light btn-small" id="calendar-btn">Add to Calendar</button>
         </ul>
-        
+
       </div>
 
     </div>
 
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <div id="modal1" class="modal grey">
+    <div class="modal-content">
+      <div class="row center-align">
+        <h4>Meal Schedule</h4>
+      </div>
+      <div class="row center-align">
+        <h6><span class="z-depth-4 amber darken-1">Monday</span></h6>
+      </div>
+      <div class="row center-align">
+        <h6><span class="z-depth-4 amber darken-1">Tuesday</span></h6>
+      </div>
+      <div class="row center-align">
+        <h6><span class="z-depth-4 amber darken-1">Wednesday</span></h6>
+      </div>
+      <div class="row center-align">
+        <h6><span class="z-depth-4 amber darken-1">Thursday</span></h6>
+      </div>
+      <div class="row center-align">
+        <h6><span class="z-depth-4 amber darken-1">Friday</span></h6>
+      </div>
+      <div class="row center-align">
+        <h6><span class="z-depth-4 amber darken-1">Saturday</span></h6>
+      </div>
+      <div class="row center-align">
+        <h6><span class="z-depth-4 amber darken-1">Sunday</span></h6>
+      </div>
+
+
+    </div>
+    <div class="modal-footer">
+      <button href="#!" class="modal-close waves-effect waves-green btn-flat">Close</button>
+    </div>
+  </div>
+
+
+  <script>$(document).ready(function () {
+      $('.modal').modal();
+    }
+    ) </script>
+
   <script src="script.js"></script>
 </body>
 
