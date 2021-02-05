@@ -16,3 +16,11 @@ h1 {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
+.btn-small {
+    text-align: center;
+    border-radius: 5px;
+    margin: 15px;
+    background-color: #039be5;
+    font-weight: bolder;
+}
