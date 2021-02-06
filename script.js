@@ -1,27 +1,25 @@
 var recipesresults = document.querySelector('#recipesResults');
-// var userSearch = document.querySelector('#user-search');
-var searchBtn = document.querySelector('#search-btn');
-var randomBtn = document.querySelector('#random-btn');
+var searchButton = document.querySelector('#search-btn');
+var randomButton = document.querySelector('#random-btn');
 
-var userSearch = "s=" + $("#user-search").val()
+function getRecipe() {
+  var ingredient = $('#user-search').val();
+  console.log($('#user-search'));
+  console.log(ingredient);
+  var requestRecipe = 'https://themealdb.com/api/json/v1/1/search.php?s=' + ingredient + '';
 
-function getRecipeByName(userSearch) {
-  var requestRecipeByName = 'https://www.themealdb.com/api/json/v1/1/search.php?';
-
-  console.log(userSearch)
-  $.get(requestRecipeByName, userSearch)
-    .done(console.log(data))
-    .fail(console.log("error"));
-
+  $.ajax({
+    url: requestRecipe,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+  });
 }
 
+function getRandomMeal() {
+  var requestMealIDB = 'https://www.themealdb.com/api/json/v1/1/random.php';
 
-
-
-function getMealDB() {
-  var requestMealDB = 'https://www.themealdb.com/api/json/v1/1/random.php';
-
-  fetch(requestMealDB)
+  fetch(requestMealIDB)
     .then(function (response) {
       return response.json();
     })
@@ -44,5 +42,5 @@ function getMealDB() {
     });
 }
 
-randomBtn.addEventListener('click', getMealDB);
-searchBtn.addEventListener('click', getRecipeByName);
+searchButton.addEventListener('click', getRecipe);
+randomButton.addEventListener('click', getRandomMeal);
