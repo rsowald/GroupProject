@@ -39,3 +39,11 @@ h1 {
     border-radius: 5px;
     padding: 2px;
 }
+
+.thumbnail {
+    display: inline;
+    float: left;
+    clear: both;
+    height: 100px;
+    width: auto;
+}
