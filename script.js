@@ -1,22 +1,46 @@
-var recipesresults = document.querySelector('#recipesResults');
-var searchButton = document.querySelector('#search-btn');
-var randomButton = document.querySelector('#random-btn');
+$(document).ready(function () {
 
-function getRecipe() {
-  var ingredient = $('#user-search').val();
-  console.log($('#user-search'));
-  console.log(ingredient);
-  var requestRecipe = 'https://themealdb.com/api/json/v1/1/search.php?s=' + ingredient + '';
+  // var recipeResults = document.querySelector('#recipesResults');
+  var searchButton = document.querySelector('#search-btn');
+  var randomButton = document.querySelector('#random-btn');
 
-  $.ajax({
-    url: requestRecipe,
-    method: "GET",
-  }).then(function (response) {
-    console.log(response);
-  });
-}
+  function getRecipe() {
+    var ingredient = $('#user-search').val();
+    console.log(ingredient);
+    var requestRecipe = 'https://themealdb.com/api/json/v1/1/search.php?s=' + ingredient + '';
 
-function getCocktail() {
+    $.ajax({
+      url: requestRecipe,
+      method: "GET",
+    }).then(function (response) {
+      console.log(response);
+      displayResults(response)
+    });
+  }
+
+  function displayResults(response) {
+    var recipeResults = $("#recipesResults");
+    recipeResults.empty();
+    var recipes = response.meals;
+    if (!recipes) {
+      //TODO: nothing found
+      return;
+    }
+
+    for (var i = 0; i < recipes.length; i++) {
+      var recipe = recipes[i];
+      var result = $("<div class='result'></div>");
+      var thumbnail = $("<img src='" + recipe.strMealThumb + "' class='thumbnail'></img>");
+      var title = $("<h5>" + recipe.strMeal + "</h5>");
+      var link = $("<a href= '" + recipe.strSource + "'>" + recipe.strSource + "</a>");
+      result.append(thumbnail, title, link);
+      recipeResults.append(result);
+
+    }
+
+  }
+
+  function getCocktail() {
   var requestCocktail = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
 
   $.ajax({
@@ -43,6 +67,8 @@ function getCocktail() {
   });
 }
 
-searchButton.addEventListener('click', getRecipe);
-randomButton.addEventListener('click', getCocktail);
+  searchButton.addEventListener('click', getRecipe);
+  randomButton.addEventListener('click', getRandomMeal);
 
+
+});

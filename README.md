@@ -30,5 +30,6 @@ THEN I can write items to a shopping list that I can access later until I clear 
 - Can't decide what you want to cook or don't feel like cooking? Hook up Zomato API to search for local restaurants by cuisine.
 - Add allergies, health restrictions
 - Shopping list with price estimate and availability
+- We are currently just displaying links to the recipes as search results, but we could display the title and link as a collapsed card and actually render the ingredients and instructions if the card is expanded
 
 
