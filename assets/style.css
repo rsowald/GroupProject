@@ -20,17 +20,35 @@ h1 {
     padding: 15px;
 }
 
-.btn-small {
+.favorites {
+    padding: 12px;
+}
+
+.btn-large {
     text-align: center;
+    text-transform: none;
+    padding: none;
     border-radius: 5px;
     margin: 15px;
     background-color: #039be5;
+    color: black;
     font-weight: bolder;
+}
+
+.btn-small {
+    text-align: center;
+    text-transform: none;
+    padding: none;
+    border-radius: 5px;
+    margin: 15px;
+    background-color: #039be5;
+    color: black;
 }
 
 .card-action button {
     border-radius: 5px;
     background-color: #039be5;
+    text-transform: none;
     color: black;
     font-weight: bolder;
 }
