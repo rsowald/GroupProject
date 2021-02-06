@@ -65,6 +65,7 @@ h1 {
 .thumbnail {
     display: inline;
     float: left;
+    clear: both;
     height: 100px;
     width: auto;
 }
