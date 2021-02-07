@@ -58,14 +58,6 @@ h1 {
     padding: 2px;
 }
 
-.result {
-    display: block;
-}
-
-.thumbnail {
-    display: inline;
-    float: left;
-    clear: both;
-    height: 100px;
-    width: auto;
+.card-panel .row {
+    margin-bottom: 0;
 }
