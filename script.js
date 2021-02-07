@@ -79,6 +79,10 @@ $(document).ready(function () {
     });
   }
 
+  $(document).ready(function () {
+    $('.modal').modal();
+  });
+
   searchButton.addEventListener('click', getRecipe);
   randomButton.addEventListener('click', getCocktail);
 
