@@ -61,3 +61,7 @@ h1 {
 .card-panel .row {
     margin-bottom: 0;
 }
+
+.day-of-week {
+    font-weight: bolder;
+}
