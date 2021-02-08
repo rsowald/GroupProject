@@ -86,5 +86,4 @@ $(document).ready(function () {
   searchButton.addEventListener('click', getRecipe);
   randomButton.addEventListener('click', getCocktail);
 
-
 });
