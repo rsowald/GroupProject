@@ -80,6 +80,7 @@ $(document).ready(function () {
 
   $('.modal').modal();
 
+  // saveAndCloseButton.addEventListener('click', saveUserInput);
   searchButton.addEventListener('click', getRecipe);
   randomButton.addEventListener('click', getCocktail);
 });
