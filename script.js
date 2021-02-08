@@ -3,7 +3,6 @@ $(document).ready(function () {
   var recipesresults = document.querySelector('#recipesResults');
   var searchButton = document.querySelector('#search-btn');
   var randomButton = document.querySelector('#random-btn');
-  var closeButton = document.querySelector('#close-button');
 
   function getRecipe() {
     var ingredient = $('#user-search').val();
@@ -79,13 +78,8 @@ $(document).ready(function () {
     });
   }
 
-  function saveToCalendar() {
-
-  }
-
   $('.modal').modal();
 
-  closeButton.addEventListener('click', saveToCalendar);
   searchButton.addEventListener('click', getRecipe);
   randomButton.addEventListener('click', getCocktail);
 });
