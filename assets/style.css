@@ -24,7 +24,7 @@ h1 {
     padding: 12px;
 }
 
-.btn-large {
+.btn {
     text-align: center;
     text-transform: none;
     padding: none;
@@ -60,4 +60,8 @@ h1 {
 
 .card-panel .row {
     margin-bottom: 0;
+}
+
+.input-field {
+    width: 180px !important;
 }
