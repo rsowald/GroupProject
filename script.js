@@ -75,12 +75,13 @@ $(document).ready(function () {
       console.log(cocktailTitle);
       console.log(cocktailThumb);
 
-
     });
   }
 
+
+  $('.modal').modal();
+
+
   searchButton.addEventListener('click', getRecipe);
   randomButton.addEventListener('click', getCocktail);
-
-
 });
