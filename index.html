@@ -19,15 +19,29 @@
 </head>
 
 <body>
-  <header class="center-align amber">
+  <header class="center amber">
     <h1>What Am I Eating Today?</h1>
   </header>
   <div class="container">
     <div class="row">
+      <div class="col s12 m4 inline"></div>
+      <form class="col s6 m4 input-field center inline">
+        <input id="user-search" type="text">
+        <label class="active" for="user-search">Search by Dish Name</label>
+        <button type="submit" class="waves-effect waves-light btn prefix" id="search-btn"><i
+            class="material-icons">search</i></button>
+      </form>
+      <div class="col s6 m4 right">
+        <h5 class="inline">How about a cocktail?</h5>
+        <button class="waves-effect waves-light btn" id="random-btn">Random Cocktail</button>
+      </div>
 
-      <aside class="col s3">
+    </div>
+    <div class="row">
+
+      <aside class="col s12 m3">
         <div class="card-panel amber favorites">
-          <h5 class="center-align">Favorite Recipes</h5>
+          <h5 class="center">Favorite Recipes</h5>
           <ul id="savedLinks"></ul>
           <!-- savedLinks -->
           <div></div>
@@ -43,24 +57,16 @@
           </div>
       </aside>
 
-      <div class="col s9">
+      <div class="col s12 m9">
         <div class="row">
-          <div class="col s4">
-            <h5>Find New Recipes</h5>
-            <div class="input-field">
-              <input id="user-search" type="text" class="validate">
-              <label class="active" for="user-search">Ingredient or Keyword</label>
-            </div>
-            <button class="waves-effect waves-light btn-large" id="search-btn">Search</button>
-            <h5>No ideas?</h5>
-            <button class="waves-effect waves-light btn-large" id="random-btn">Random</button>
-            <br>
+          <div class="col s12 m6">
             <button class="waves-effect waves-light btn-small" id="calendar-btn">Add to Calendar</button>
-          </div>
-
-          <div class="col s8">
             <div id="recipesResults"></div>
           </div>
+          <div class="col s12 m6" id="cocktailResult">
+
+          </div>
+
         </div>
 
       </div>

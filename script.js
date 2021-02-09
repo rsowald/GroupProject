@@ -32,8 +32,11 @@ $(document).ready(function () {
 
       var link = recipe.strSource || `https://www.themealdb.com/meal.php?c=${recipe.idMeal}`;
       var youtube = recipe.strYoutube ? ` • <a href="${recipe.strYoutube}" target="_blank">Video</a>` : '';
+      var weekdays = ['M', 'T', 'W', 'Th', 'F', 'S', 'Sun'];
+      var calendarButtons = weekdays.map(day => '<a class="waves-effect waves-teal btn-flat">' + day + '</a>');
 
-      var card = `<div class="card-panel grey lighten-5 z-depth-1">
+
+      var card = $(`<div class="card-panel grey lighten-5 z-depth-1">
 <div class="row valign-wrapper">
   <div class="col s3">
     <img src="${recipe.strMealThumb}" alt="image of ${recipe.strMeal}" class="circle responsive-img">
@@ -43,13 +46,23 @@ $(document).ready(function () {
     <br>
     <a href="${link}" target="_blank">Recipe</a>
     ${youtube}
+    <br>
+    ${calendarButtons.join(' • ')}
   </div>
 </div>
-</div>`;
+</div>`);
 
-      recipeResults.append($(card));
+      card.find('a.btn-flat').click(function () {
+        var btn = $(this);
+        saveRecipeToDay(link, btn.text());
+      })
+
+      recipeResults.append(card);
     }
+  }
 
+  function saveRecipeToDay(recipeLink, dayOfWeek) {
+    console.log(`Saving ${recipeLink} to ${dayOfWeek}`);
   }
 
   function getCocktail() {
@@ -78,15 +91,21 @@ $(document).ready(function () {
     });
   }
 
-  $('#modal-main-content').on('click', 'a', function (event) {
-    event.preventDefault();
-    var text = $('.saved-meals').val();
-    var userInput = text;
-    console.log(userInput);
 
-    var id = $(this).attr('id');
-    localStorage.setItem(id, userInput);
+
+  searchButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    getRecipe();
   })
+
+  randomButton.addEventListener('click', getCocktail);
+  // $('.modal-content').on('click', 'button', function (event) {
+  //   event.preventDefault();
+  //   var text = $(this).children('textarea').val();
+  //   var userInput = text;
+  //   var id = $(this).attr('id');
+  //   localStorage.setItem(id, userInput);
+  // })
 
   $('.modal').modal();
 
