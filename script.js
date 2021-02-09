@@ -73,23 +73,33 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (response) {
       console.log(response);
-
-      var cocktailTitle = document.createElement('h5')
-
-      cocktailTitle.textContent = response.drinks[0].strDrink;
-
-      var cocktailThumb = new Image();
-      cocktailThumb.src = response.drinks[0].strDrinkThumb
-
-      recipesresults.append(cocktailTitle);
-      recipesresults.append(cocktailThumb);
-
-
-      console.log(cocktailTitle);
-      console.log(cocktailThumb);
-
+      displayDrink(response);
     });
   }
+
+  function displayDrink(response) {
+    var drinkResults = $("#drinkResult");
+    drinkResults.empty();
+
+    var drink = response.drinks[0]
+    console.log(drink);
+
+    var ctResult = $("<div class='result'></div>");
+    var ctTitle = $("<h5>" + drink.strDrink + "</h5>");
+    var ctThumb = $("<img src='" + drink.strDrinkThumb + "'class='thumbnail'></img>");
+    var ctType = $("<p>" + drink.strCategory + "</p>");
+    var ctLink = $("<a href='https://www.thecocktaildb.com/drink/ " + drink.idDrink + "'>LINK</a>");
+
+    ctResult.append(ctThumb, ctTitle, ctType, ctLink);
+    drinkResults.append(ctResult);
+
+    console.log(ctResult);
+    console.log(ctTitle);
+    console.log(ctThumb);
+    console.log(ctType);
+    console.log(ctLink);
+  }
+
 
 
 
