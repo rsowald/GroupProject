@@ -100,13 +100,14 @@ $(document).ready(function () {
 
   randomButton.addEventListener('click', getCocktail);
 
-  // $('.modal-content').on('click', 'button', function (event) {
-  //   event.preventDefault();
-  //   var text = $(.saved - meal;
-  //   var userInput = text;
-  //   var id = $(this).attr('id');
-  //   localStorage.setItem(id, userInput);
-  // })
+  $('.modal-main-content').on('click', 'a', function (event) {
+    event.preventDefault();
+    var text = $('.saved-meals');
+    var userInput = text;
+    console.log(userInput);
+    var id = $(this).attr('id');
+    localStorage.setItem(id, userInput);
+  })
 
   $('.modal').modal();
 
