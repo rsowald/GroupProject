@@ -88,7 +88,6 @@ $(document).ready(function () {
       console.log(cocktailTitle);
       console.log(cocktailThumb);
 
-
     });
   }
 
@@ -100,6 +99,16 @@ $(document).ready(function () {
   })
 
   randomButton.addEventListener('click', getCocktail);
+  // $('.modal-content').on('click', 'button', function (event) {
+  //   event.preventDefault();
+  //   var text = $(this).children('textarea').val();
+  //   var userInput = text;
+  //   var id = $(this).attr('id');
+  //   localStorage.setItem(id, userInput);
+  // })
 
+  $('.modal').modal();
 
+  searchButton.addEventListener('click', getRecipe);
+  randomButton.addEventListener('click', getCocktail);
 });
