@@ -13,6 +13,15 @@ h1 {
     margin: 0px;
 }
 
+h5 {
+    display: inline-block;
+    margin-bottom: 0px;
+}
+
+.modal h6 {
+    font-weight: bolder;
+}
+
 .container {
     background-color: rgb(255, 224, 130, .5);
     margin-top: 50px;
@@ -27,9 +36,11 @@ h1 {
 .btn {
     text-align: center;
     text-transform: none;
-    padding: none;
+    padding-left: 5px;
+    padding-right: 5px;
     border-radius: 5px;
-    margin: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
     background-color: #039be5;
     color: black;
     font-weight: bolder;
@@ -50,6 +61,12 @@ h1 {
     color: #039be5;
 }
 
+#random-btn {
+    margin-bottom: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
 .card-action button {
     border-radius: 5px;
     background-color: #039be5;
@@ -58,19 +75,14 @@ h1 {
     font-weight: bolder;
 }
 
-.modal span {
+textarea.materialize-textarea {
+    background-color: #616161;
+    color: white;
     border-radius: 5px;
     padding: 2px;
+    margin: 0px;
 }
 
 .card-panel .row {
     margin-bottom: 0;
-}
-
-.input-field {
-    width: 180px !important;
-}
-
-.day-of-week {
-    font-weight: bolder;
 }
