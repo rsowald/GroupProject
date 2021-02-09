@@ -32,37 +32,46 @@ $(document).ready(function () {
 
       var link = recipe.strSource || `https://www.themealdb.com/meal.php?c=${recipe.idMeal}`;
       var youtube = recipe.strYoutube ? ` • <a href="${recipe.strYoutube}" target="_blank">Video</a>` : '';
-      var weekdays = ['M', 'T', 'W', 'Th', 'F', 'S', 'Sun'];
+      var weekdays = ['Sun', 'M', 'T', 'W', 'Th', 'F', 'S'];
       var calendarButtons = weekdays.map(day => '<a class="waves-effect waves-teal btn-flat">' + day + '</a>');
 
 
       var card = $(`<div class="card-panel grey lighten-5 z-depth-1">
-<div class="row valign-wrapper">
-  <div class="col s3">
-    <img src="${recipe.strMealThumb}" alt="image of ${recipe.strMeal}" class="circle responsive-img">
+  <div class="row valign-wrapper">
+    <div class="col s3">
+      <img src="${recipe.strMealThumb}" alt="image of ${recipe.strMeal}" class="circle responsive-img">
+    </div>
+    <div class="col s9">
+      <span class="black-text flow-text">${recipe.strMeal}</span>
+      <br>
+      <a href="${link}" target="_blank">Recipe</a>
+      ${youtube}
+      <br>
+      <span class="center">Save to Calendar: <br>${calendarButtons.join(' • ')}</span>
+    </div>
   </div>
-  <div class="col s9">
-    <span class="black-text flow-text">${recipe.strMeal}</span>
-    <br>
-    <a href="${link}" target="_blank">Recipe</a>
-    ${youtube}
-    <br>
-    ${calendarButtons.join(' • ')}
-  </div>
-</div>
 </div>`);
 
-      card.find('a.btn-flat').click(function () {
-        var btn = $(this);
-        saveRecipeToDay(link, btn.text());
-      })
+      function addToCalendar(recipeLink) {
+        return function () {
+          var btn = $(this);
+          saveRecipeToDay(recipeLink, btn.text());
+        };
+      }
+
+      card.find('a.btn-flat').click(addToCalendar(link))
 
       recipeResults.append(card);
     }
+
+
   }
 
   function saveRecipeToDay(recipeLink, dayOfWeek) {
-    console.log(`Saving ${recipeLink} to ${dayOfWeek}`);
+    var newLine = "\n";
+    var currentText = $("#day-" + dayOfWeek).val();
+    currentText = currentText ? currentText + newLine : "";
+    $("#day-" + dayOfWeek).val(currentText + recipeLink);
   }
 
   function getCocktail() {
@@ -73,23 +82,33 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (response) {
       console.log(response);
-
-      var cocktailTitle = document.createElement('h5')
-
-      cocktailTitle.textContent = response.drinks[0].strDrink;
-
-      var cocktailThumb = new Image();
-      cocktailThumb.src = response.drinks[0].strDrinkThumb
-
-      recipesresults.append(cocktailTitle);
-      recipesresults.append(cocktailThumb);
-
-
-      console.log(cocktailTitle);
-      console.log(cocktailThumb);
-
+      displayDrink(response);
     });
   }
+
+  function displayDrink(response) {
+    var drinkResults = $("#drinkResult");
+    drinkResults.empty();
+
+    var drink = response.drinks[0]
+    console.log(drink);
+
+    var ctResult = $("<div class='result'></div>");
+    var ctTitle = $("<h5>" + drink.strDrink + "</h5>");
+    var ctThumb = $("<img src='" + drink.strDrinkThumb + "'class='thumbnail'></img>");
+    var ctType = $("<p>" + drink.strCategory + "</p>");
+    var ctLink = $("<a href='https://www.thecocktaildb.com/drink/ " + drink.idDrink + "'>LINK</a>");
+
+    ctResult.append(ctThumb, ctTitle, ctType, ctLink);
+    drinkResults.append(ctResult);
+
+    console.log(ctResult);
+    console.log(ctTitle);
+    console.log(ctThumb);
+    console.log(ctType);
+    console.log(ctLink);
+  }
+
 
 
 
@@ -111,6 +130,4 @@ $(document).ready(function () {
 
   $('.modal').modal();
 
-  searchButton.addEventListener('click', getRecipe);
-  randomButton.addEventListener('click', getCocktail);
 });
