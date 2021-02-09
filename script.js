@@ -23,7 +23,7 @@ $(document).ready(function () {
     recipeResults.empty();
     var recipes = response.meals;
     if (!recipes) {
-      //TODO: nothing found
+      Materialize.toast("Looks like there are no results for that search!", 4000, "blue lighten-2 rounded");
       return;
     }
 
