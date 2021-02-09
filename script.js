@@ -126,6 +126,7 @@ $(document).ready(function () {
     for (var i = 0; i < variablesArray.length; i++) {
       var text = $('.materialize-textarea')[i];
       var userInput = text.value;
+      console.log(userInput);
       if (text === null) {
         continue
       }
@@ -137,7 +138,9 @@ $(document).ready(function () {
 
   function displaySavedCalendar() {
     for (var i = 0; i < variablesArray.length; i++) {
-      var localStorageContent = localStorage.getItem(JSON.parse(variablesArray[i]));
+      // var localStorageContent = localStorage.getItem(JSON.parse(variablesArray[i]));
+      var localStorageContent = localStorage.getItem(variablesArray[i]);
+
       if (localStorageContent === null) {
         continue
       };
@@ -150,3 +153,12 @@ $(document).ready(function () {
   displaySavedCalendar();
   $('.modal').modal();
 });
+
+// let myObject = {
+//   property: "someValue"
+// }
+
+// // turn that object to a string so it can be put in local storage
+// localStorage.setItem('label', JSON.stringify(myObject));
+
+// JSON.parse(localStorage.getitem('label'))
