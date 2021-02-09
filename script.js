@@ -32,7 +32,7 @@ $(document).ready(function () {
 
       var link = recipe.strSource || `https://www.themealdb.com/meal.php?c=${recipe.idMeal}`;
       var youtube = recipe.strYoutube ? ` • <a href="${recipe.strYoutube}" target="_blank">Video</a>` : '';
-      var weekdays = ['M', 'T', 'W', 'Th', 'F', 'S', 'Sun'];
+      var weekdays = ['Sun', 'M', 'T', 'W', 'Th', 'F', 'S'];
       var calendarButtons = weekdays.map(day => '<a class="waves-effect waves-teal btn-flat">' + day + '</a>');
 
 
@@ -47,7 +47,7 @@ $(document).ready(function () {
     <a href="${link}" target="_blank">Recipe</a>
     ${youtube}
     <br>
-    ${calendarButtons.join(' • ')}
+    <span class="center">Save to Calendar: <br>${calendarButtons.join(' • ')}</span>
   </div>
 </div>
 </div>`);

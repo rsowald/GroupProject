@@ -13,6 +13,10 @@ h1 {
     margin: 0px;
 }
 
+.modal h6 {
+    font-weight: bolder;
+}
+
 .container {
     background-color: rgb(255, 224, 130, .5);
     margin-top: 50px;
@@ -58,19 +62,18 @@ h1 {
     font-weight: bolder;
 }
 
-.modal span {
+textarea.materialize-textarea {
+    background-color: #616161;
+    color: white;
     border-radius: 5px;
     padding: 2px;
+    margin: 0px;
 }
 
 .card-panel .row {
     margin-bottom: 0;
 }
 
-.input-field {
+#user-search {
     width: 180px !important;
-}
-
-.day-of-week {
-    font-weight: bolder;
 }
