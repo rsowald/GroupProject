@@ -37,32 +37,41 @@ $(document).ready(function () {
 
 
       var card = $(`<div class="card-panel grey lighten-5 z-depth-1">
-<div class="row valign-wrapper">
-  <div class="col s3">
-    <img src="${recipe.strMealThumb}" alt="image of ${recipe.strMeal}" class="circle responsive-img">
+  <div class="row valign-wrapper">
+    <div class="col s3">
+      <img src="${recipe.strMealThumb}" alt="image of ${recipe.strMeal}" class="circle responsive-img">
+    </div>
+    <div class="col s9">
+      <span class="black-text flow-text">${recipe.strMeal}</span>
+      <br>
+      <a href="${link}" target="_blank">Recipe</a>
+      ${youtube}
+      <br>
+      <span class="center">Save to Calendar: <br>${calendarButtons.join(' • ')}</span>
+    </div>
   </div>
-  <div class="col s9">
-    <span class="black-text flow-text">${recipe.strMeal}</span>
-    <br>
-    <a href="${link}" target="_blank">Recipe</a>
-    ${youtube}
-    <br>
-    <span class="center">Save to Calendar: <br>${calendarButtons.join(' • ')}</span>
-  </div>
-</div>
 </div>`);
 
-      card.find('a.btn-flat').click(function () {
-        var btn = $(this);
-        saveRecipeToDay(link, btn.text());
-      })
+      function addToCalendar(recipeLink) {
+        return function () {
+          var btn = $(this);
+          saveRecipeToDay(recipeLink, btn.text());
+        };
+      }
+
+      card.find('a.btn-flat').click(addToCalendar(link))
 
       recipeResults.append(card);
     }
+
+
   }
 
   function saveRecipeToDay(recipeLink, dayOfWeek) {
-    console.log(`Saving ${recipeLink} to ${dayOfWeek}`);
+    var newLine = "\n";
+    var currentText = $("#day-" + dayOfWeek).val();
+    currentText = currentText ? currentText + newLine : "";
+    $("#day-" + dayOfWeek).val(currentText + recipeLink);
   }
 
   function getCocktail() {
