@@ -80,9 +80,10 @@ $(document).ready(function () {
 
   $('#modal-main-content').on('click', 'a', function (event) {
     event.preventDefault();
-    var text = $(this).children('textarea').val();
+    var text = $('.saved-meals').val();
     var userInput = text;
     console.log(userInput);
+
     var id = $(this).attr('id');
     localStorage.setItem(id, userInput);
   })
