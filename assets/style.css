@@ -38,11 +38,16 @@ h1 {
 .btn-small {
     text-align: center;
     text-transform: none;
-    padding: none;
+    padding: 0;
     border-radius: 5px;
     margin: 15px;
     background-color: #039be5;
     color: black;
+}
+
+.btn-flat {
+    padding: 0;
+    color: #039be5;
 }
 
 .card-action button {
