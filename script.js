@@ -118,14 +118,35 @@ $(document).ready(function () {
   })
 
   randomButton.addEventListener('click', getCocktail);
-  // $('.modal-content').on('click', 'button', function (event) {
-  //   event.preventDefault();
-  //   var text = $(this).children('textarea').val();
-  //   var userInput = text;
-  //   var id = $(this).attr('id');
-  //   localStorage.setItem(id, userInput);
-  // })
 
+  var variablesArray = ['day-Sun', 'day-M', 'day-T', 'day-W', 'day-Th', 'day-F', 'day-S'];
+
+  $('#close-button').on('click', function (event) {
+    event.preventDefault();
+    for (var i = 0; i < variablesArray.length; i++) {
+      var text = $('.materialize-textarea')[i];
+      var userInput = text.value;
+      if (text === null) {
+        continue
+      }
+      console.log(userInput);
+      var id = variablesArray[i];
+      localStorage.setItem(id, JSON.stringify(userInput));
+    };
+  });
+
+  function displaySavedCalendar() {
+    for (var i = 0; i < variablesArray.length; i++) {
+      var localStorageContent = localStorage.getItem(JSON.parse(variablesArray[i]));
+      if (localStorageContent === null) {
+        continue
+      };
+      var text = localStorageContent
+      console.log(localStorageContent);
+      $('#' + variablesArray[i]).val(text);
+    };
+  };
+
+  displaySavedCalendar();
   $('.modal').modal();
-
 });
