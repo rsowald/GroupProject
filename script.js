@@ -99,9 +99,10 @@ $(document).ready(function () {
   })
 
   randomButton.addEventListener('click', getCocktail);
+
   // $('.modal-content').on('click', 'button', function (event) {
   //   event.preventDefault();
-  //   var text = $(this).children('textarea').val();
+  //   var text = $(.saved - meal;
   //   var userInput = text;
   //   var id = $(this).attr('id');
   //   localStorage.setItem(id, userInput);
