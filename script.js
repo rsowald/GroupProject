@@ -132,13 +132,12 @@ $(document).ready(function () {
       }
       console.log(userInput);
       var id = variablesArray[i];
-      localStorage.setItem(id, JSON.stringify(userInput));
+      localStorage.setItem(id, userInput);
     };
   });
 
   function displaySavedCalendar() {
     for (var i = 0; i < variablesArray.length; i++) {
-      // var localStorageContent = localStorage.getItem(JSON.parse(variablesArray[i]));
       var localStorageContent = localStorage.getItem(variablesArray[i]);
 
       if (localStorageContent === null) {
@@ -153,12 +152,3 @@ $(document).ready(function () {
   displaySavedCalendar();
   $('.modal').modal();
 });
-
-// let myObject = {
-//   property: "someValue"
-// }
-
-// // turn that object to a string so it can be put in local storage
-// localStorage.setItem('label', JSON.stringify(myObject));
-
-// JSON.parse(localStorage.getitem('label'))
