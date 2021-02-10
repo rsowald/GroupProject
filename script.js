@@ -116,9 +116,8 @@ $(document).ready(function () {
     // Drink Link
     var ctLink = `https://www.thecocktaildb.com/drink.php?c=${drink.idDrink}`;
 
-    // sets drink name to local storage
-    localStorage.setItem("drink", drink.strDrink);
-    console.log(localStorage.getItem("drink"));
+    var weekdays = ['Sun', 'M', 'T', 'W', 'Th', 'F', 'S'];
+    var calendarButtons = weekdays.map(day => '<a class="waves-effect waves-teal btn-flat">' + day + '</a>');
 
     // variable to create card & display drink information
     var card = $(`<div class="card-panel grey lighten-5 z-depth-1">
@@ -132,10 +131,21 @@ $(document).ready(function () {
       <a href="${ctLink}" target="_blank">Drink</a>
       <br>
       <p>Drink type: ${drink.strCategory}</p>
-
+      <span class="center">Save to Calendar: <br>${calendarButtons.join(' • ')}</span>
     </div>
-  </div>
-</div>`);
+    </div>
+  </div>`);
+
+    // function to add selected recipe to calender
+    function addToCalendar(link) {
+      return function () {
+        var btn = $(this);
+        saveRecipeToDay(link, btn.text());
+      };
+    }
+
+    // searches the card to find anchor with class button flat & adds click handler
+    card.find('a.btn-flat').click(addToCalendar(ctLink))
     // append drink card to drink results section
     drinkResults.append($(card));
 
