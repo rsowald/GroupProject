@@ -1,41 +1,53 @@
+// loads local document
 $(document).ready(function () {
 
-  var recipesresults = document.querySelector('#recipesResults');
+  // selects search recipe & random drink button
   var searchButton = document.querySelector('#search-btn');
   var randomButton = document.querySelector('#random-btn');
 
+  // function to get recipe based on user input
   function getRecipe() {
+    // variable to store value of user input
     var ingredient = $('#user-search').val();
     console.log(ingredient);
+    // variable for the recipe mealDB
     var requestRecipe = 'https://themealdb.com/api/json/v1/1/search.php?s=' + ingredient + '';
 
+    // ajax call for recipe data, then console log response
     $.ajax({
       url: requestRecipe,
       method: "GET",
     }).then(function (response) {
       console.log(response);
+      // run display recipe function
       displayResults(response)
     });
   }
 
+  // displays recipe to webpage
   function displayResults(response) {
+    // variable selects recipe results section
     var recipeResults = $("#recipesResults");
+    // empties recipe results
     recipeResults.empty();
+    // variable response meals
     var recipes = response.meals;
     if (!recipes) {
       Materialize.toast("Looks like there are no results for that search!", 4000, "blue lighten-2 rounded");
       return;
     }
 
+    // for loop to go through recipe data
     for (var i = 0; i < recipes.length; i++) {
       var recipe = recipes[i];
 
+      // variables for recipe link, youtube, weekdays, calendar buttons
       var link = recipe.strSource || `https://www.themealdb.com/meal.php?c=${recipe.idMeal}`;
       var youtube = recipe.strYoutube ? ` • <a href="${recipe.strYoutube}" target="_blank">Video</a>` : '';
       var weekdays = ['Sun', 'M', 'T', 'W', 'Th', 'F', 'S'];
       var calendarButtons = weekdays.map(day => '<a class="waves-effect waves-teal btn-flat">' + day + '</a>');
 
-
+      // variable to create card & display recipe information
       var card = $(`<div class="card-panel grey lighten-5 z-depth-1">
   <div class="row valign-wrapper">
     <div class="col s3">
@@ -52,6 +64,7 @@ $(document).ready(function () {
   </div>
 </div>`);
 
+      // function to add selected recipe to calender
       function addToCalendar(recipeLink) {
         return function () {
           var btn = $(this);
@@ -59,14 +72,16 @@ $(document).ready(function () {
         };
       }
 
+      // searches the card to find anchor with class button flat & adds click handler
       card.find('a.btn-flat').click(addToCalendar(link))
-
+      // append recipe card to recipe results section
       recipeResults.append(card);
     }
 
 
   }
 
+  // function to save recipe link to day of week
   function saveRecipeToDay(recipeLink, dayOfWeek) {
     var newLine = "\n";
     var currentText = $("#day-" + dayOfWeek).val();
@@ -74,53 +89,71 @@ $(document).ready(function () {
     $("#day-" + dayOfWeek).val(currentText + recipeLink);
   }
 
+  // cocktailDB API call for Random Drink
   function getCocktail() {
     var requestCocktail = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
 
+    // ajax call for requesting Drink Information
     $.ajax({
       url: requestCocktail,
       method: "GET",
     }).then(function (response) {
       console.log(response);
+      // run display drink function
       displayDrink(response);
     });
   }
 
+  // Function to display Drink content
   function displayDrink(response) {
     var drinkResults = $("#drinkResult");
     drinkResults.empty();
 
+    // Variable to hold Drink Info
     var drink = response.drinks[0]
     console.log(drink);
 
-    var ctResult = $("<div class='result'></div>");
-    var ctTitle = $("<h5>" + drink.strDrink + "</h5>");
-    var ctThumb = $("<img src='" + drink.strDrinkThumb + "'class='thumbnail'></img>");
-    var ctType = $("<p>" + drink.strCategory + "</p>");
-    var ctLink = $("<a href='https://www.thecocktaildb.com/drink/ " + drink.idDrink + "'>LINK</a>");
+    // Drink Link
+    var ctLink = `https://www.thecocktaildb.com/drink.php?c=${drink.idDrink}`;
 
-    ctResult.append(ctThumb, ctTitle, ctType, ctLink);
-    drinkResults.append(ctResult);
+    // sets drink name to local storage
+    localStorage.setItem("drink", drink.strDrink);
+    console.log(localStorage.getItem("drink"));
 
-    console.log(ctResult);
-    console.log(ctTitle);
-    console.log(ctThumb);
-    console.log(ctType);
-    console.log(ctLink);
+    // variable to create card & display drink information
+    var card = $(`<div class="card-panel grey lighten-5 z-depth-1">
+  <div class="row valign-wrapper">
+    <div class="col s3">
+      <img src="${drink.strDrinkThumb}" alt="image of ${drink.strDrink}" class="circle responsive-img">
+    </div>
+    <div class="col s9">
+      <span class="black-text flow-text">${drink.strDrink}</span>
+      <br>
+      <a href="${ctLink}" target="_blank">Drink</a>
+      <br>
+      <p>Drink type: ${drink.strCategory}</p>
+
+    </div>
+  </div>
+</div>`);
+    // append drink card to drink results section
+    drinkResults.append($(card));
+
   }
 
-
-
-
+  // search button event listener
   searchButton.addEventListener('click', function (event) {
     event.preventDefault();
     getRecipe();
   })
 
+  // random button event listener
   randomButton.addEventListener('click', getCocktail);
 
+  // variable array for days of the week
   var variablesArray = ['day-Sun', 'day-M', 'day-T', 'day-W', 'day-Th', 'day-F', 'day-S'];
 
+  // close and save input to related textarea in calender modal
   $('#close-button').on('click', function (event) {
     event.preventDefault();
     for (var i = 0; i < variablesArray.length; i++) {
@@ -136,6 +169,7 @@ $(document).ready(function () {
     };
   });
 
+  // display saved calendar to user
   function displaySavedCalendar() {
     for (var i = 0; i < variablesArray.length; i++) {
       var localStorageContent = localStorage.getItem(variablesArray[i]);
