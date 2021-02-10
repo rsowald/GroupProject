@@ -67,6 +67,10 @@ h5 {
     padding-left: 8px;
     padding-right: 8px;
 }
+/* user input id */
+#user-search {
+    max-width: 80%;
+}
 /* card action class */
 .card-action button {
     border-radius: 5px;
