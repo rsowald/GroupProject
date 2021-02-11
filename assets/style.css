@@ -83,7 +83,17 @@ h5 {
 textarea.materialize-textarea {
     background-color: #616161;
     color: white;
-    border-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 2px;
+    margin: 0px;
+}
+
+.links {
+    background-color: #616161;
+    color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     padding: 2px;
     margin: 0px;
 }

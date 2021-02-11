@@ -83,9 +83,9 @@ $(document).ready(function () {
   // function to save recipe link to day of week
   function saveRecipeToDay(recipeLink, dayOfWeek) {
     var newLine = "\n";
-    var currentText = $("#day-" + dayOfWeek).val();
+    var currentText = $("#" + dayOfWeek + "-links").html();
     currentText = currentText ? currentText + newLine : "";
-    $("#day-" + dayOfWeek).val(currentText + recipeLink);
+    $("#" + dayOfWeek + "-links").html(currentText + "<a href='" + recipeLink + "' target='_blank'>" + recipeLink + "</a>");
   }
 
   // function to get random drink 
@@ -161,47 +161,79 @@ $(document).ready(function () {
   // random button event listener
   randomButton.addEventListener('click', getCocktail);
 
-  // variable array for days of the week in calendar modal
-  var variablesArray = ['day-Sun', 'day-M', 'day-T', 'day-W', 'day-Th', 'day-F', 'day-S'];
 
-  // close & save button for input of related textarea in calendar modal
+  // variable array for all data in days of the week
+  var variablesArray = [
+    {
+      day: Sun,
+      linksDiv: $("#links-Sun"),
+      textarea: $("#day-Sun")
+    },
+    {
+      day: Mon,
+      linksDiv: $("#links-M"),
+      textarea: $("#day-M")
+    },
+    {
+      day: Tues,
+      linksDiv: $("#links-T"),
+      textarea: $("#day-T")
+    },
+    {
+      day: Wed,
+      linksDiv: $("#links-W"),
+      textarea: $("#day-W")
+    },
+    {
+      day: Thurs,
+      linksDiv: $("#links-Th"),
+      textarea: $("#day-Th")
+    },
+    {
+      day: Fri,
+      linksDiv: $("#links-F"),
+      textarea: $("#day-F")
+    },
+    {
+      day: Sat,
+      linksDiv: $("#links-S"),
+      textarea: $("#day-S")
+    }
+
+  ]
+
+  // close and save input from calendar to local storage
   $('#close-button').on('click', function (event) {
     event.preventDefault();
-    // for loop goes through week day array of calendar
-    for (var i = 0; i < variablesArray.length; i++) {
-      var text = $('.materialize-textarea')[i];
-      var userInput = text.value;
-      console.log(userInput);
-      // if textarea is empty continue
-      if (text === null) {
-        continue
-      }
-      console.log(userInput);
-      var id = variablesArray[i];
-      // set user input to local storage
-      localStorage.setItem(id, userInput);
-    };
+    localStorage.setItem("meal schedule", JSON.stringify(variablesArray));
   });
 
-  // function to display saved calendar inputs
+  $("#clear-button").on("click", function (event) {
+    event.preventDefault();
+    $("#links-S").empty();
+    $("#day-S").text("");
+  })
+
+  // display saved calendar to user
   function displaySavedCalendar() {
-    // for loop goes through week day array of calendar
-    for (var i = 0; i < variablesArray.length; i++) {
-      // gets user input from local storage
-      var localStorageContent = localStorage.getItem(variablesArray[i]);
-      // if textarea is empty continue
-      if (localStorageContent === null) {
-        continue
+    var localStorageContent = JSON.parse(localStorage.getItem("meal schedule"))
+    console.log(localStorageContent);
+    if (localStorageContent !== null) {
+      for (var i = 0; i < localStorageContent.length; i++) {
+        var textArea = $("#day-" + day[i]);
+        var linkDiv = $("#link-" + day[i]);
+        textArea.empty();
+        linkDiv.empty();
+        textArea.text(textarea[i]);
+        linkDiv.html(linksDiv[i]);
       };
-      var text = localStorageContent
-      console.log(localStorageContent);
-      // adds value of local storage to week day array
-      $('#' + variablesArray[i]).val(text);
+
     };
   };
 
   // calls display saved calendar function
   displaySavedCalendar();
+
   // creates modal with modal method
   $('.modal').modal();
 });
