@@ -1,15 +1,16 @@
 // local document is loaded
-$(document).ready(function () {
+$(function () {
 
   // selects search recipe & random drink button
   var searchButton = document.querySelector('#search-btn');
   var randomButton = document.querySelector('#random-btn');
 
+  var calendarDays = ['Sun', 'M', 'T', 'W', 'Th', 'F', 'S'];
+
   // function to get recipe based on user input
   function getRecipe() {
     // variable to store value of user input
     var ingredient = $('#user-search').val();
-    console.log(ingredient);
     // variable for recipe mealDB URL
     var requestRecipe = 'https://themealdb.com/api/json/v1/1/search.php?s=' + ingredient + '';
 
@@ -82,10 +83,8 @@ $(document).ready(function () {
 
   // function to save recipe link to day of week
   function saveRecipeToDay(recipeLink, dayOfWeek) {
-    var newLine = "\n";
-    var currentText = $("#" + dayOfWeek + "-links").html();
-    currentText = currentText ? currentText + newLine : "";
-    $("#" + dayOfWeek + "-links").html(currentText + "<a href='" + recipeLink + "' target='_blank'>" + recipeLink + "</a>");
+    var newLine = "<br>";
+    $("#links-" + dayOfWeek).append("<a href='" + recipeLink + "' target='_blank'>" + recipeLink + "</a>" + newLine);
   }
 
   // function to get random drink 
@@ -98,7 +97,6 @@ $(document).ready(function () {
       url: requestCocktail,
       method: "GET",
     }).then(function (response) {
-      console.log(response);
       // run display drink function
       displayDrink(response);
     });
@@ -112,14 +110,12 @@ $(document).ready(function () {
     drinkResults.empty();
 
     // variable to hold drink data
-    var drink = response.drinks[0]
-    console.log(drink);
+    var drink = response.drinks[0];
 
     // variable for drink information link
     var ctLink = `https://www.thecocktaildb.com/drink.php?c=${drink.idDrink}`;
-    // variables for weekday & calendar buttons
-    var weekdays = ['Sun', 'M', 'T', 'W', 'Th', 'F', 'S'];
-    var calendarButtons = weekdays.map(day => '<a class="waves-effect waves-teal btn-flat">' + day + '</a>');
+
+    var calendarButtons = calendarDays.map(day => '<a class="waves-effect waves-teal btn-flat">' + day + '</a>');
 
     // variable to create card & display drink information
     var card = $(`<div class="card-panel grey lighten-5 z-depth-1">
@@ -130,7 +126,7 @@ $(document).ready(function () {
     <div class="col s9">
       <span class="black-text flow-text">${drink.strDrink}</span>
       <br>
-      <a href="${ctLink}" target="_blank">Drink</a>
+      <a href="${ctLink}" target="_blank">Drink Recipe</a>
       <br>
       <p>Drink type: ${drink.strCategory}</p>
       <span class="center">Save to Calendar: <br>${calendarButtons.join(' • ')}</span>
@@ -149,92 +145,53 @@ $(document).ready(function () {
     // searches the card to find anchor with class "button flat" & adds click handler
     card.find('a.btn-flat').click(addToCalendar(ctLink))
     // append drink card to drink result section
-    drinkResults.append($(card));
+    drinkResults.append(card);
   }
 
   // search button event listener
   searchButton.addEventListener('click', function (event) {
     event.preventDefault();
     getRecipe();
-  })
+  });
 
   // random button event listener
   randomButton.addEventListener('click', getCocktail);
 
-
-  // variable array for all data in days of the week
-  var variablesArray = [
-    {
-      day: Sun,
-      linksDiv: $("#links-Sun"),
-      textarea: $("#day-Sun")
-    },
-    {
-      day: Mon,
-      linksDiv: $("#links-M"),
-      textarea: $("#day-M")
-    },
-    {
-      day: Tues,
-      linksDiv: $("#links-T"),
-      textarea: $("#day-T")
-    },
-    {
-      day: Wed,
-      linksDiv: $("#links-W"),
-      textarea: $("#day-W")
-    },
-    {
-      day: Thurs,
-      linksDiv: $("#links-Th"),
-      textarea: $("#day-Th")
-    },
-    {
-      day: Fri,
-      linksDiv: $("#links-F"),
-      textarea: $("#day-F")
-    },
-    {
-      day: Sat,
-      linksDiv: $("#links-S"),
-      textarea: $("#day-S")
+  $("#clear-button").on("click", function () {
+    for (var i = 0; i < calendarDays.length; i++) {
+      var day = calendarDays[i];
+      $("#links-" + day).empty();
+      $("#day-" + day).val("");
     }
-
-  ]
-
-  // close and save input from calendar to local storage
-  $('#close-button').on('click', function (event) {
-    event.preventDefault();
-    localStorage.setItem("meal schedule", JSON.stringify(variablesArray));
   });
 
-  $("#clear-button").on("click", function (event) {
-    event.preventDefault();
-    $("#links-S").empty();
-    $("#day-S").text("");
-  })
+  // close and save input from calendar to local storage
+  $('#close-button').on('click', function () {
+    var savedCalendar = calendarDays.map(day => ({
+      name: day,
+      links: $("#links-" + day).html(),
+      text: $("#day-" + day).val()
+    }));
+
+    localStorage.setItem("mealSchedule", JSON.stringify(savedCalendar));
+  });
 
   // display saved calendar to user
   function displaySavedCalendar() {
-    var localStorageContent = JSON.parse(localStorage.getItem("meal schedule"))
-    console.log(localStorageContent);
-    if (localStorageContent !== null) {
-      for (var i = 0; i < localStorageContent.length; i++) {
-        var textArea = $("#day-" + day[i]);
-        var linkDiv = $("#link-" + day[i]);
-        textArea.empty();
-        linkDiv.empty();
-        textArea.text(textarea[i]);
-        linkDiv.html(linksDiv[i]);
+    var savedCalendar = JSON.parse(localStorage.getItem("mealSchedule"));
+    if (savedCalendar !== null) {
+      for (var i = 0; i < savedCalendar.length; i++) {
+        var day = savedCalendar[i];
+        $("#day-" + day.name).text(day.text);
+        $("#links-" + day.name).empty().append(day.links);
       };
-
     };
   };
 
   // calls display saved calendar function
   displaySavedCalendar();
 
-  // creates modal with modal method
+  // initialize modal on page load
   $('.modal').modal();
 });
 
