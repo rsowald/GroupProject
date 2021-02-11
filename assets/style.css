@@ -1,38 +1,39 @@
+/* main body */
 body {
     background-image: url("lukas-blazek-f-TWhXOrLiU-unsplash.jpg");
     background-size: cover;
     background-color: black;
     color: rgb(29, 28, 28);
 }
-
+/* header */
 header {
     margin: 0px;
 }
-
+/* h1 style*/
 h1 {
     margin: 0px;
 }
-
+/* h5 style*/
 h5 {
     display: inline-block;
     margin-bottom: 0px;
 }
-
+/* h6 for modal class */
 .modal h6 {
     font-weight: bolder;
 }
-
+/* container class */
 .container {
     background-color: rgb(255, 224, 130, .5);
     margin-top: 50px;
     margin-bottom: 50px;
     padding: 15px;
 }
-
+/*  favorites class */
 .favorites {
     padding: 12px;
 }
-
+/* button class */
 .btn {
     text-align: center;
     text-transform: none;
@@ -45,7 +46,7 @@ h5 {
     color: black;
     font-weight: bolder;
 }
-
+/* button small class */
 .btn-small {
     text-align: center;
     text-transform: none;
@@ -55,18 +56,22 @@ h5 {
     background-color: #039be5;
     color: black;
 }
-
+/* button flat class */
 .btn-flat {
     padding: 0;
     color: #039be5;
 }
-
+/* random button id */
 #random-btn {
     margin-bottom: 5px;
     padding-left: 8px;
     padding-right: 8px;
 }
-
+/* user input id */
+#user-search {
+    max-width: 80%;
+}
+/* card action class */
 .card-action button {
     border-radius: 5px;
     background-color: #039be5;
@@ -74,7 +79,7 @@ h5 {
     color: black;
     font-weight: bolder;
 }
-
+/* calendar textarea */
 textarea.materialize-textarea {
     background-color: #616161;
     color: white;
@@ -92,7 +97,7 @@ textarea.materialize-textarea {
     padding: 2px;
     margin: 0px;
 }
-
+/* card panel & row class */
 .card-panel .row {
     margin-bottom: 0;
 }

@@ -2,133 +2,151 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- webpage meta data, title, links -->
+
 <head>
+  <!-- metadata -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- title -->
   <title>What Am I Eating Today?</title>
+  <!-- materialize css link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
+  <!-- google font/icon link -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- jquery link -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js">
   </script>
+  <!-- materialize js link -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js">
   </script>
+  <!-- link for local css -->
   <link rel="stylesheet" href="assets/style.css">
-
 </head>
 
+<!-- main body -->
+
 <body>
+  <!-- webpage header -->
   <header class="center amber">
     <h1>What Am I Eating Today?</h1>
   </header>
+  <!-- main container -->
   <div class="container">
+
+    <!-- top row for input/buttons -->
     <div class="row">
+      <!-- column recipe input -->
       <div class="col s12 m3 inline"></div>
+      <!-- input form -->
       <form class="col s12 m4 input-field center inline">
+        <!-- user input -->
         <input id="user-search" type="text">
         <label class="active" for="user-search">Search by Dish Name</label>
         <button type="submit" class="waves-effect waves-light btn prefix" id="search-btn"><i
             class="material-icons">search</i></button>
       </form>
+      <!-- column for drink button -->
       <div class="col s12 m4 right">
         <h5>Random cocktail?</h5>
         <button class="waves-effect waves-light btn" id="random-btn"><i class="material-icons">search</i></button>
-
       </div>
-
     </div>
+
+    <!-- main row -->
     <div class="row">
-
+      <!-- column for aside -->
       <aside class="col s12 m3">
-        <div class="card-panel amber favorites">
-          <h5 class="center">Favorite Recipes</h5>
-          <ul id="savedLinks"></ul>
-          <!-- savedLinks -->
-          <div></div>
 
-        </div>
+        <!-- card for calendar -->
         <div class="card">
+          <!-- calendar image -->
           <div class="card-image">
             <img src="assets/eric-rothermel-FoKO4DpXamQ-unsplash.jpg">
             <span class="card-title">Calendar</span>
           </div>
+          <!-- open calendar button -->
           <div class="card-action">
             <button class="waves-effect waves-light btn modal-trigger" href="#modal1">Open</button>
           </div>
       </aside>
 
+      <!-- column for search results -->
       <div class="col s12 m9">
         <div class="row">
           <div class="col s12 m6">
+            <!-- empty div for recipes -->
             <div id="recipesResults"></div>
           </div>
-          <div class="col s12 m6" id="drinkResult">
-
-          </div>
-
+          <!-- empty div for drink -->
+          <div class="col s12 m6" id="drinkResult"></div>
         </div>
-
       </div>
+
     </div>
   </div>
 
+<!-- main modal -->
   <div id="modal1" class="modal modal-fixed-footer grey lighten-4">
-    <div class="modal-content">
 
+      <div class="modal-content">
+      <!-- top row  -->
       <div class="row center">
         <h4>Meal Schedule</h4>
       </div>
-
+      <!-- Sunday textarea input -->
       <div class="input-field row">
         <h6>Sunday</h6>
         <div class="links" id="links-Sun"></div>
         <textarea placeholder="Add notes here..." id="day-Sun" class="materialize-textarea"></textarea>
       </div>
-
+      <!-- Monday textarea input -->
       <div class="input-field row">
         <h6>Monday</h6>
         <div class="links" id="links-M"></div>
         <textarea placeholder="Add notes here..." id="day-M" class="materialize-textarea"></textarea>
       </div>
-
+      <!-- Tuesday textarea input -->
       <div class="input-field row">
         <h6>Tuesday</h6>
         <div class="links" id="links-T"></div>
         <textarea placeholder="Add notes here..." id="day-T" class="materialize-textarea"></textarea>
       </div>
-
+      <!-- Wednesday textarea input -->
       <div class="input-field row">
         <h6>Wednesday</h6>
         <div class="links" id="links-W"></div>
         <textarea placeholder="Add notes here..." id="day-W" class="materialize-textarea"></textarea>
       </div>
-
+      <!-- Thursday textarea input -->
       <div class="input-field row">
         <h6>Thursday</h6>
         <div class="links" id="links-Th"></div>
         <textarea placeholder="Add notes here..." id="day-Th" class="materialize-textarea"></textarea>
       </div>
-
+      <!-- Friday textarea input -->
       <div class="input-field row">
         <h6>Friday</h6>
         <div class="links" id="links-F"></div>
         <textarea placeholder="Add notes here..." id="day-F" class="materialize-textarea"></textarea>
       </div>
-
+      <!-- Saturday textarea input -->
       <div class="input-field row">
         <h6>Saturday</h6>
         <div class="links" id="links-S"></div>
         <textarea placeholder="Add notes here..." id="day-S" class="materialize-textarea"></textarea>
       </div>
-
     </div>
+    <!-- modal footer -->
     <div class="modal-footer">
+<!-- save & close button and clear button-->
       <button class="modal-close waves-effect waves-green btn" id="close-button">Save and Close</button>
       <button class="waves-effect waves-green btn" id="clear-button">Clear</button>
-    </div>
+     
+         </div>
   </div>
-
+  <!-- script source for local js -->
   <script src="script.js"></script>
 </body>
 
