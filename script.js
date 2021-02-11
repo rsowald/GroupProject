@@ -237,3 +237,8 @@ $(document).ready(function () {
   // creates modal with modal method
   $('.modal').modal();
 });
+
+//displays date
+var today = luxon.DateTime.local();
+var date = today.toLocaleString({ month: 'long', day: 'numeric', year: 'numeric' });
+plannerDate.innerHTML = date;
