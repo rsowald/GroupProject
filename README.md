@@ -24,17 +24,9 @@ displaying the recipes within the card correctly and saving them in the calendar
 a button to clear the calendar and start new the next week was another challenge.
 
 ## Resources:
-<a href="https://unsplash.com/@goumbik?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText/">Meal
-Planner<a>
+<a href="https://unsplash.com/@goumbik?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText/">Background Photo by Lukas Blazek on Unsplash<a>
 
-<a href="https://unsplash.com/s/photos/food?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText/">Food
- Photos</a>
-
-<a href="https://unsplash.com/@erothermel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText/">Background
-Images</a>
-
-<a href="https://unsplash.com/s/photos/calendar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Calendar
-Images</a>
+<a href="https://unsplash.com/@erothermel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText/">Calendar Photo by Eric Rothermel on Unsplash</a>
 
 ## Contributors:
-Greg, Jenny, Nick, Renae
+Greg Harris, Jenny Detmering, Nick Rider, Renae Sowald
