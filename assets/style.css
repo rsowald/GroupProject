@@ -10,20 +10,20 @@ body {
 /* header */
 
 header {
-    margin: 0px;
+    margin: 0;
 }
 
 /* h1 style*/
 
 h1 {
-    margin: 0px;
+    margin: 0;
 }
 
 /* h5 style*/
 
 h5 {
     display: inline-block;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 /* h6 for modal class */
@@ -118,7 +118,7 @@ textarea.materialize-textarea {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding: 2px;
-    margin: 0px;
+    margin: 0;
 }
 
 .links {
@@ -127,7 +127,9 @@ textarea.materialize-textarea {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     padding: 2px;
-    margin: 0px;
+    margin: 0;
+    width: 100%;
+    box-sizing: content-box;
 }
 
 /* card panel & row class */
