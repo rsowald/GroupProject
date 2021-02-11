@@ -7,8 +7,6 @@
 
 <a href="https://rsowald.github.io/GroupProject-FoodPlanner/">Meal Planner<a>
 
-![site2](/assets/site2.PNG)
-
 ## Table of Contents
 
 1) Project Description
