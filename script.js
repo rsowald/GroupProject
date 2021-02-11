@@ -194,3 +194,8 @@ $(function () {
   // initialize modal on page load
   $('.modal').modal();
 });
+
+//displays date
+var today = luxon.DateTime.local();
+var date = today.toLocaleString({ month: 'long', day: 'numeric', year: 'numeric' });
+plannerDate.innerHTML = date;
