@@ -186,3 +186,8 @@ $(document).ready(function () {
   displaySavedCalendar();
   $('.modal').modal();
 });
+
+//displays date
+var today = luxon.DateTime.local();
+var date = today.toLocaleString({ month: 'long', day: 'numeric', year: 'numeric' });
+plannerDate.innerHTML = date;
