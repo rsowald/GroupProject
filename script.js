@@ -84,9 +84,9 @@ $(document).ready(function () {
   // function to save recipe link to day of week
   function saveRecipeToDay(recipeLink, dayOfWeek) {
     var newLine = "\n";
-    var currentText = $("#day-" + dayOfWeek).val();
+    var currentText = $("#" + dayOfWeek + "-links").html();
     currentText = currentText ? currentText + newLine : "";
-    $("#day-" + dayOfWeek).val(currentText + recipeLink);
+    $("#" + dayOfWeek + "-links").html(currentText + "<a href='" + recipeLink + "' target='_blank'>" + recipeLink + "</a>");
   }
 
   // cocktailDB API call for Random Drink
@@ -150,39 +150,75 @@ $(document).ready(function () {
   // random button event listener
   randomButton.addEventListener('click', getCocktail);
 
-  // variable array for days of the week
-  var variablesArray = ['day-Sun', 'day-M', 'day-T', 'day-W', 'day-Th', 'day-F', 'day-S'];
+  // variable array for all data in days of the week
+  var variablesArray = [
+    {
+      day: Sun,
+      linksDiv: $("#links-Sun"),
+      textarea: $("#day-Sun")
+    },
+    {
+      day: Mon,
+      linksDiv: $("#links-M"),
+      textarea: $("#day-M")
+    },
+    {
+      day: Tues,
+      linksDiv: $("#links-T"),
+      textarea: $("#day-T")
+    },
+    {
+      day: Wed,
+      linksDiv: $("#links-W"),
+      textarea: $("#day-W")
+    },
+    {
+      day: Thurs,
+      linksDiv: $("#links-Th"),
+      textarea: $("#day-Th")
+    },
+    {
+      day: Fri,
+      linksDiv: $("#links-F"),
+      textarea: $("#day-F")
+    },
+    {
+      day: Sat,
+      linksDiv: $("#links-S"),
+      textarea: $("#day-S")
+    }
 
-  // close and save input to related textarea in calender modal
+  ]
+
+  // close and save input from calendar to local storage
   $('#close-button').on('click', function (event) {
     event.preventDefault();
-    for (var i = 0; i < variablesArray.length; i++) {
-      var text = $('.materialize-textarea')[i];
-      var userInput = text.value;
-      console.log(userInput);
-      if (text === null) {
-        continue
-      }
-      console.log(userInput);
-      var id = variablesArray[i];
-      localStorage.setItem(id, userInput);
-    };
+    localStorage.setItem("meal schedule", JSON.stringify(variablesArray));
   });
+
+  $("#clear-button").on("click", function (event) {
+    event.preventDefault();
+    $("#links-S").empty();
+    $("#day-S").text("");
+  })
 
   // display saved calendar to user
   function displaySavedCalendar() {
-    for (var i = 0; i < variablesArray.length; i++) {
-      var localStorageContent = localStorage.getItem(variablesArray[i]);
-
-      if (localStorageContent === null) {
-        continue
+    var localStorageContent = JSON.parse(localStorage.getItem("meal schedule"))
+    console.log(localStorageContent);
+    if (localStorageContent !== null) {
+      for (var i = 0; i < localStorageContent.length; i++) {
+        var textArea = $("#day-" + day[i]);
+        var linkDiv = $("#link-" + day[i]);
+        textArea.empty();
+        linkDiv.empty();
+        textArea.text(textarea[i]);
+        linkDiv.html(linksDiv[i]);
       };
-      var text = localStorageContent
-      console.log(localStorageContent);
-      $('#' + variablesArray[i]).val(text);
     };
   };
 
   displaySavedCalendar();
+
   $('.modal').modal();
 });
