@@ -14,8 +14,9 @@
 3) User Story
 4) Web Application
 5) Challenges
-6) Resources
-7) Contributors
+6) Future 
+7) Resources
+8) Contributors
 
 ## Project Description:
 Search for recipe ideas by meal name and save your recipe links to a built-in weekly calender. Meal Planner also has a random cocktail button that will present you a cocktail recipe to go with your meal.
@@ -90,6 +91,15 @@ MealDB API, CocktailDB API, HTML, CSS, Materialize, Javascript, Jquery, JSON, AJ
 - It was also difficult to include and display the recipes within a card correctly and then saving them in the calendar modal as a link. 
 
 - Then adding a button to clear the calendar and start new for the next week of meal planning and drinks.
+
+## Direction for Future Development:
+- Can't decide what you want to cook or don't feel like cooking? Hook up Zomato API to search for local restaurants by cuisine.
+
+- Add allergies, and health restrictions to recipe search
+
+- Shopping list with price estimate and availability
+
+- We are currently just displaying links to the recipes as search results, but we could display the title and link as a collapsed card and actually render the ingredients and instructions when the card is expanded
 
 ## Resources:
 <a href="https://unsplash.com/@goumbik?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText/">Background Photo by Lukas Blazek on Unsplash<a>
