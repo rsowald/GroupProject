@@ -5,7 +5,7 @@
 
 *LIVE REPOSITORY*
 
-<a href="https://rsowald.github.io/GroupProject-FoodPlanner/">Meal Planner<a>
+<a href="https://rsowald.github.io/MealPlanner/">Meal Planner<a>
 
 ## Table of Contents
 
