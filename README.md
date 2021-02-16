@@ -108,3 +108,6 @@ MealDB API, CocktailDB API, HTML, CSS, Materialize, Javascript, Jquery, JSON, AJ
 
 ## Contributors:
 Greg Harris, Jenny Detmering, Nick Rider, Renae Sowald
+
+## License:
+![MIT](LICENSE)
