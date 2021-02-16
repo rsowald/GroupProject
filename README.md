@@ -30,3 +30,6 @@ a button to clear the calendar and start new the next week was another challenge
 
 ## Contributors:
 Greg Harris, Jenny Detmering, Nick Rider, Renae Sowald
+
+## License:
+![MIT](LICENSE)
